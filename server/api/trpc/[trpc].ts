@@ -1,6 +1,6 @@
 import { createNuxtApiHandler } from 'trpc-nuxt/server'
 import { appRouter } from '../../appRouter'
-import { createContext as trpcCreateContext } from '../../context'
+import { createContext } from '../../context'
 import type { H3Event } from 'h3'
 
 /**
@@ -10,8 +10,9 @@ import type { H3Event } from 'h3'
  */
 export default createNuxtApiHandler({
   router: appRouter,
-  createContext: async (event: H3Event) => {
-    // `event` is the H3Event object for the request
-    return trpcCreateContext({ event })
-  },
+  createContext,
+  // createContext: async (event: H3Event) => {
+  //   // `event` is the H3Event object for the request
+  //   return trpcCreateContext({ event })
+  // },
 })
