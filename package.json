@@ -3,13 +3,11 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
-    "vercel-build": "nuxi prepare && nuxt build"
-  },
+  "dev": "nuxt dev",
+  "build": "nuxi prepare && nuxt build",
+  "preview": "nuxt preview",
+  "generate": "nuxt generate"
+},
   "dependencies": {
     "@trpc/client": "^11.12.0",
     "@trpc/server": "^11.12.0",
@@ -17,5 +15,8 @@
     "trpc-nuxt": "^1.2.0",
     "vue": "^3.5.30",
     "vue-router": "^5.0.3"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }

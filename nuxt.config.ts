@@ -5,4 +5,7 @@ export default defineNuxtConfig({
   build: {
     transpile: ['@trpc/server', 'trpc-nuxt/server'],
   },
+  typescript: {
+    shim: false
+  }
 })
