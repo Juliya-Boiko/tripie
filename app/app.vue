@@ -1,7 +1,7 @@
 <template>
-  <div>
-    App nuxt  v2 !!!!!
-  </div>
+  <header>Header</header>
+    <main><NuxtPage /></main>
+  <footer>Footer</footer>
 </template>
 
 <script setup lang="ts">

@@ -5,11 +5,26 @@ export default defineNuxtConfig({
   build: {
     transpile: ['trpc-nuxt'],
   },
-  // nitro: {
-  //   preset: 'vercel-edge', // або 'vercel-node' якщо потрібен node lambda
-  //   serveStatic: true
+  css: ['~/assets/scss/main.scss'],
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "~/assets/_variables.scss" as *;',
+        },
+      },
+    },
+  },
+
+  // vite: {
+  //   css: {
+  //     preprocessorOptions: {
+  //       scss: {
+  //         additionalData: `
+  //           @use "./styles/_typografy.scss" as *;
+  //         `,
+  //       },
+  //     },
+  //   },
   // },
-  // typescript: {
-  //   shim: false // для правильних типів TS, не треба імпортувати augments
-  // }
 })
