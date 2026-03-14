@@ -5,8 +5,7 @@
   "scripts": {
   "dev": "nuxt dev",
   "build": "nuxi prepare && nuxt build",
-  "preview": "nuxt preview",
-  "generate": "nuxt generate"
+  "preview": "nuxt preview"
 },
   "dependencies": {
     "@trpc/client": "^11.12.0",
