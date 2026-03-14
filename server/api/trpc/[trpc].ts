@@ -1,5 +1,5 @@
 import { createNuxtApiHandler } from 'trpc-nuxt/server'
-import { appRouter } from '~~/server/appRouter'
+import { appRouter } from '../../appRouter'
 import { createContext as trpcCreateContext } from '../../context'
 import type { H3Event } from 'h3'
 
