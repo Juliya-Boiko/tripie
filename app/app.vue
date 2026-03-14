@@ -1,5 +1,5 @@
 <template>
-  <header>Header</header>
-  <main><NuxtPage /></main>
-  <footer>Footer</footer>
+  <div>
+    App nuxt !!!!!
+  </div>
 </template>

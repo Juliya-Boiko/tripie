@@ -11,10 +11,7 @@
     "vercel-build": "nuxi prepare && nuxt build"
   },
   "dependencies": {
-    "@trpc/client": "^11.5.1",
-    "@trpc/server": "^11.5.1",
     "nuxt": "^4.4.2",
-    "trpc-nuxt": "^1.2.0",
     "vue": "^3.5.30",
     "vue-router": "^5.0.3"
   }
