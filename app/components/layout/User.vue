@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-const isAuth = false
+const isAuth = true
 </script>
 
 <style scoped lang="scss">

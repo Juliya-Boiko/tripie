@@ -3,7 +3,7 @@
     <UiLogo />
     <nav class="header__nav">
       <nuxt-link 
-        v-for="route in appRoutes"
+        v-for="route in navRoutes"
         :key="route.label"
         :to="route.path"
         class="caption"
@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { appRoutes } from '~/constants';
+import { navRoutes } from '~/constants';
 </script>
 
 <style scoped lang="scss">
@@ -34,7 +34,14 @@ import { appRoutes } from '~/constants';
     align-items: center;
     gap: 32px;
     color: $neutral-4;
-    font-family: "DM Sans", sans-serif;
+  }
+
+  @media screen and (max-width: 1200px) {
+    padding: 0 40px;
+
+    &__nav {
+      gap: 16px;
+    }
   }
 }
 </style>
