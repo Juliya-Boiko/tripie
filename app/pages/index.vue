@@ -1,6 +1,9 @@
 <template>
-  <div class="test">
-   index page
+  <div class="wrapper">
+    <HomeHero />
+    <div class="wrapper__filters">
+      <FiltersBox />
+    </div>
   </div>
 </template>
 
@@ -10,9 +13,18 @@ const price = ref(1500)
 </script>
 
 <style scoped lang="scss">
-.test {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+.wrapper {
+  position: relative;
+  padding-bottom: 80px;
+  background-color: aqua;
+
+  &__filters {
+    width: 100%;
+    max-width: 1220px;
+    position: relative;
+    left: 50%;
+    top: -80px;
+    transform: translateX(-50%);
+  }
 }
 </style>

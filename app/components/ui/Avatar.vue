@@ -25,7 +25,7 @@ const displayedName = computed(() => {
 })
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .avatar {
   border-radius: 50%;
   background-color: $primary-blue;

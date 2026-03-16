@@ -47,7 +47,7 @@ import { aboutRoutes, supportRoutes } from '~/constants';
 
 <style scoped lang="scss">
 .footer {
-  padding: 80px 160px 0 160px;
+  padding: 80px 160px 24px 160px;
   border-top: 1px solid $neutral-6;
   background: $neutral-8;
 
