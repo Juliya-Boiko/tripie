@@ -1,6 +1,11 @@
 .heading-hero {
   font-size: 72px;
   line-height: 80px;
+
+  @media screen and (max-width: 1200px) {
+    font-size: 40px;
+    line-height: 48px;
+  }
 }
 
 .heading-h1 {

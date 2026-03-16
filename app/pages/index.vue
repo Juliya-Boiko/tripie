@@ -4,10 +4,14 @@
     <div class="wrapper__filters">
       <FiltersBox />
     </div>
+    <HomeWeeklyPopular />
+    <HomeTourOffer />
+    <HomeStatistic />
   </div>
 </template>
 
 <script setup lang="ts">
+
 const input = ref('')
 const price = ref(1500)
 </script>
@@ -15,8 +19,6 @@ const price = ref(1500)
 <style scoped lang="scss">
 .wrapper {
   position: relative;
-  padding-bottom: 80px;
-  background-color: aqua;
 
   &__filters {
     width: 100%;
@@ -25,6 +27,12 @@ const price = ref(1500)
     left: 50%;
     top: -80px;
     transform: translateX(-50%);
+  }
+
+  @media screen and (max-width: 1200px) {
+    &__filters {
+      width: calc(100% - 48px);
+    }
   }
 }
 </style>
