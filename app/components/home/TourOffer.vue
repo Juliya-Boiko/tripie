@@ -26,7 +26,6 @@
   </section>
 </template>
 
-
 <script setup lang="ts">
 const list = [
   ' Luctus risusd diam eget',

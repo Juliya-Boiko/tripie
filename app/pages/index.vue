@@ -7,6 +7,7 @@
     <HomeWeeklyPopular />
     <HomeTourOffer />
     <HomeStatistic />
+    <HomeDestinationPopular />
   </div>
 </template>
 
