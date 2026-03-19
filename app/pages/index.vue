@@ -8,6 +8,7 @@
     <HomeTourOffer />
     <HomeStatistic />
     <HomeDestinationPopular />
+    <HomeAdvices />
   </div>
 </template>
 
@@ -32,7 +33,7 @@ const price = ref(1500)
 
   @media screen and (max-width: 1200px) {
     &__filters {
-      width: calc(100% - 48px);
+      width: calc(100% - 80px);
     }
   }
 }

@@ -1,7 +1,6 @@
 <template>
   <section class="section">
-    <p class="section__subtitle hairline-small">3 steps for the perfect trip</p>
-    <h2 class="section__title heading-h2">Popular Destinations</h2>
+    <h2 class="section__title heading-h2">Travel Tips & Advice</h2>
     <div class="section__wrapper">
       <p class="section__text">An enim nullam tempor gravida donec enim  congue magna at pretium purus pretium ligula rutrum luctus risusd diam eget risus varius blandit sit amet non magna.</p>
       <div class="section__controls">
@@ -27,20 +26,20 @@
     <Carousel 
       ref="carouselRef" 
       v-model="currentSlide" 
-      v-bind="config"  
+      v-bind="config"
       breakpoint-mode="carousel"
       snap-align="start"
       :breakpoints="{
         700: {
-          itemsToShow: 2.5,
+          itemsToShow: 2,
         },
         1200: {
-          itemsToShow: 3.5
+          itemsToShow: 3
         }        
       }"
     >
       <Slide v-for="image in images" :key="image.id" class="slide">
-        <UiDestinationCard />
+        <UiTipCard />
       </Slide>
     </Carousel>
   </section>
@@ -71,13 +70,7 @@ const prev = () => carouselRef.value.prev()
 
 <style scoped lang="scss">
 .section {
-  padding: 100px 0 100px 160px;
-
-  &__subtitle {
-    color: $neutral-4;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
+  padding: 100px 160px;
 
   &__title {
     margin-bottom: 12px;
@@ -118,7 +111,7 @@ const prev = () => carouselRef.value.prev()
 
   
   @media screen and (max-width: 1200px) {
-    padding: 100px 0 100px 40px;
+    padding: 100px 40px;
   }
 }
 </style>

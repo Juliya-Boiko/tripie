@@ -12,37 +12,36 @@
       <div class="card__link">Explore</div>
     </div>
     <div class="card__info">
-      <div>
-        <p class="body-3-medium card__title">Venice, Rome & Milan</p>
-        <div class="card__block">
-          <span class="caption-2 ">Karineside</span>
-          <div class="hairline-small">
-            <span class="card__price">$699</span>
-            <span class="card__discount">$548</span>
-          </div>
-        </div>
-      </div>
-      <div class="card__line" />
-      <div class="card__descr">
-        <div class="caption-2 card__dates">
-          <span>Tue, Jul 20</span><span>-</span><span>Fri, Jul 23</span>
-        </div>
-        <div class="card__rate caption-2-bold">
-          <Icon 
-            name="star-filled" 
-            width="12px" 
-            height="12px" 
-            fill="currentColor" 
-          />
-        4.9</div>
-      </div>
+      <p class="body-3-medium">Pack wisely before traveling</p>
+      <p class="caption card__text">It is almost impossible to read the news without coming across a lead story elections through fake social media accounts...</p>
+      <p class="card__date">
+        <Icon 
+          name="calendar" 
+          width="24px" 
+          height="24px" 
+          fill="currentColor" 
+        />
+        <span>25 May, 2021</span>
+      </p>
     </div>
   </div>
 </template>
 
+<script setup lang="ts">
+const getRandomColor = () => {
+  const colors = ['#4AC63F', '#F6C92D', '#FD7FE9', '#62B3FD'];
+  const randomIndex = Math.floor(Math.random() * colors.length);
+  return colors[randomIndex];
+}
+</script>
+
 <style scoped lang="scss">
 .card {
-  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  color: $neutral-2;
+  width: 100%;
 
   &__image {
     position: relative;
@@ -50,9 +49,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 220px;
+    height: 320px;
     background: #23262F;
-    border-radius: 16px 16px 0px 0px;
+    border-radius: 16px;
   }
 
   &__link {
@@ -91,55 +90,19 @@
   &__info {
     display: flex;
     flex-direction: column;
-    padding: 20px 8px;
-    gap: 16px;
+    gap: 8px;
   }
 
-  &__title {
-    color: $neutral-1;
-  }
-
-  &__line {
-    min-height: 1px;
-    width: 100%;
-    background-color: $neutral-6;
-  }
-
-  &__block {
-    padding-top: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: $neutral-3;
-  }
-
-  &__price {
-    margin-right: 6px;
-    color: $neutral-5;
-  } 
-
-  &__discount {
-    color: $primary-green;
-  }
-
-  &__descr {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  &__text {
     color: $neutral-4;
   }
 
-  &__dates {
+  &__date {
+    padding-top: 8px;
     display: flex;
     align-items: center;
-    gap: 4px;
-  }
-
-  &__rate {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    color: $neutral-2;
+    gap: 8px;
+    color: $neutral-4;
   }
 
   &:hover {
