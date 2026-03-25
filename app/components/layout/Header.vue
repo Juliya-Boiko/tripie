@@ -6,7 +6,7 @@
         v-for="route in navRoutes"
         :key="route.label"
         :to="route.path"
-        class="caption"
+        class="caption header__link"
       >
         {{ route.label }}
       </nuxt-link>
@@ -34,6 +34,11 @@ import { navRoutes } from '~/constants';
     align-items: center;
     gap: 32px;
     color: $neutral-4;
+  }
+
+  &__link.router-link-active {
+    color: $primary-green;
+    font-weight: 700;
   }
 
   @media screen and (max-width: 1200px) {

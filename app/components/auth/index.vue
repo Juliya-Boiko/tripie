@@ -22,7 +22,7 @@
       <div class="auth__header">
         <h1 class="heading-h3">{{ step }}</h1>
         <p class="body-3 auth__subtitle">
-          {{ step === 'Enter your security code' ? `Use Your OpenID to ${step}` : 'We texted your code to your email'  }}
+          {{ step === 'Enter your security code' ? 'We texted your code to your email' : `Use Your OpenID to ${step}`  }}
         </p>
       </div>
       <template v-if="step !== 'Enter your security code'">

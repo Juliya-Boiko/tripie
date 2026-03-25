@@ -35,7 +35,7 @@ const submit = (e: Event) => {
 .subscribe {
   position: relative;
   width: 100%;
-  max-width: 256px;
+  max-width: 255px;
  
   &__input {
     width: 100%;
@@ -55,7 +55,6 @@ const submit = (e: Event) => {
       color: $neutral-4;
       font-size: 14px;
       line-height: 24px;
-      font-weight: 700;
     }
   }
 

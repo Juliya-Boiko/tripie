@@ -31,7 +31,7 @@
       </div>
       <div class="footer__column">
         <h6 class="hairline">Join our community 🔥</h6>
-        <LayoutSubscribeForm />
+        <SubscribeForm />
       </div>
     </div>
    <div class="caption-bold footer__info">
