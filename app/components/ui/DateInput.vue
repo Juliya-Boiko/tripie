@@ -333,6 +333,7 @@ function isInRange(date: Date) {
     flex-direction: column;
     gap: 16px;
     color: $neutral-2;
+    z-index: 100;
   }
 
   &__header {

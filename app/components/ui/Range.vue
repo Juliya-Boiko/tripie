@@ -1,134 +1,152 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+const props = withDefaults(
+  defineProps<{
+    min?: number
+    max?: number
+    modelValue: number
+  }>(),
+  {
+    min: 0,
+    max: 5000,
+  }
+)
 
-// Configuration
-const min = ref(1000);
-const max = ref(5000);
-const price = ref(1500);
+const percentage = computed(() => ((props.modelValue - props.min) / (props.max - props.min)) * 100);
 
-// Calculate percentage for the track gradient and tooltip position
-const percentage = computed(() => {
-  return ((price.value - min.value) / (max.value - min.value)) * 100;
+
+const fillPercentage = computed(() => {
+  const offset = 3.5; 
+  return Math.max(0, percentage.value - offset);
 });
+
+const conePath = "M 2,48 C 1,48 1,52 2,52 L 96,62 C 99,62 99,38 96,38 L 2,48 Z";
+
+const emit = defineEmits<{
+  (e: "update:modelValue", value: number): void
+}>()
+
+const onInput = (e: Event) => {
+  const value = Number((e.target as HTMLInputElement).value)
+  emit("update:modelValue", value)
+}
+
+const localValue = computed({
+  get: () => props.modelValue,
+  set: (v: number) => emit("update:modelValue", v)
+})
 </script>
 
 <template>
-  <div class="price-range-container">
-    <h2 class="title">PRICE RANGE</h2>
+  <div class="range">
+    <div 
+      class="range__tooltip caption-2-bold"
+      :style="{ left: `calc(${percentage}% + (${12 - percentage * 0.24}px))` }"
+    >
+      <span>${{ props.modelValue }}</span>
+      <svg class="range__arrow" width="12" height="5" viewBox="0 0 12 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3.17157 3.17157L0 0H12L8.82843 3.17157C7.26633 4.73367 4.73367 4.73367 3.17157 3.17157Z" fill="#141416"/>
+      </svg>
+    </div>
 
-    <div class="slider-wrapper">
-      <!-- Custom Tooltip -->
-      <div 
-        class="tooltip" 
-        :style="{ left: `calc(${percentage}% + (${8 - percentage * 0.15}px))` }"
-      >
-        ${{ price }}
-      </div>
+    <div class="range__track">
+      <!-- SVG Track -->
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none" class="range__cone">
+        <defs>
+          <!-- Clip path to cut the black fill before the dot -->
+          <clipPath id="coneClip">
+            <rect x="0" y="0" :width="fillPercentage" height="100" />
+          </clipPath>
+        </defs>
+        
+        <!-- Background (Grey) -->
+        <path :d="conePath" fill="#EDEEF2" />
+        
+        <!-- Active Fill (Black) -->
+        <path :d="conePath" fill="#1A1A1A" clip-path="url(#coneClip)" />
+      </svg>
 
-      <!-- Range Input -->
-      <input
-        v-model.number="price"
-        type="range"
-        :min="min"
-        :max="max"
-        step="100"
-        class="slider"
-        :style="{ '--progress': percentage + '%' }"
+      <input 
+        v-model="localValue"
+        type="range" 
+        :min="min" 
+        :max="max" 
+        step="1" 
+        class="range__input"
       />
+    </div>
 
-      <!-- Labels -->
-      <div class="labels">
-        <span>${{ min }}</span>
-        <span>${{ max }}</span>
-      </div>
+    <div class="range__labels caption-bold">
+      <span>${{ min }}</span>
+      <span>${{ max }}</span>
     </div>
   </div>
 </template>
 
-<style scoped>
-.price-range-container {
-  font-family: sans-serif;
-  width: 100%;
-  max-width: 500px;
-  padding: 20px;
-}
-
-.title {
-  font-weight: 800;
-  font-size: 1.5rem;
-  margin-bottom: 40px;
-}
-
-.slider-wrapper {
+<style scoped lang="scss">
+.range {
   position: relative;
-  padding-top: 40px;
-}
+  width: 256px;
 
-/* Tooltip Styling */
-.tooltip {
-  position: absolute;
-  top: -15px;
-  transform: translateX(-50%);
-  background: #1a1a1a;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 12px;
-  font-weight: bold;
-  font-size: 1.1rem;
-  z-index: 2;
-}
+  &__tooltip {
+    position: absolute;
+    top: -34px;
+    display: inline-flex;
+    align-items: flex-start;
+    padding: 4px 8px;
+    height: 28px;
+    background: $neutral-1;
+    border-radius: 8px;
+    color: $neutral-8;
+    z-index: 2;
+    transform: translateX(-50%); 
+  }
+  
+  &__arrow {
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
-.tooltip::after {
-  content: "";
-  position: absolute;
-  bottom: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-top: 7px solid #1a1a1a;
-}
+  &__track {
+    position: relative;
+    height: 40px;
+    display: flex;
+    align-items: center;
+  }
 
-/* Slider Base */
-.slider {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 12px;
-  border-radius: 10px;
-  /* Dynamic track color using linear-gradient */
-  background: linear-gradient(to right, #1a1a1a var(--progress), #e5e7eb var(--progress));
-  outline: none;
-}
+  &__labels {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-/* Thumb Styling */
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 24px;
-  height: 24px;
-  background: #1a1a1a;
-  border-radius: 50%;
-  cursor: pointer;
-  border: 4px solid #fff;
-  box-shadow: 0 0 0 1px #e5e7eb;
-}
+  &__input {
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    z-index: 5;
+    margin: 0;
 
-.slider::-moz-range-thumb {
-  width: 24px;
-  height: 24px;
-  background: #1a1a1a;
-  border-radius: 50%;
-  cursor: pointer;
-  border: 4px solid #fff;
-}
-
-/* Labels Styling */
-.labels {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-  font-weight: 700;
-  font-size: 1.2rem;
-  color: #1a1a1a;
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 24px;
+      width: 24px;
+      background-color: $neutral-1;
+      border-radius: 50%;
+      border: 4px solid $neutral-8;
+      cursor: pointer;
+    }
+  }
+ 
+  &__cone {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+  }
 }
 </style>

@@ -8,6 +8,7 @@
     <HomeTourOffer />
     <HomeStatistic />
     <HomeDestinationPopular />
+    <HomeVideoAdv />
     <HomeAdvices />
   </div>
 </template>

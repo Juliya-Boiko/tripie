@@ -91,7 +91,6 @@ const prev = () => carouselRef.value.prev()
 
   &__controls {
     display: flex;
-    padding-right: 160px;
     gap: 8px;
     align-items: center;
   }
