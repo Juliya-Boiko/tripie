@@ -1,10 +1,11 @@
 <template>
   <div class="layout">
-    <LayoutHeader />
+    <Auth />
+    <!-- <LayoutHeader />
     <main class="main">
       <NuxtPage />
     </main>
-    <LayoutFooter />
+    <LayoutFooter /> -->
   </div>
 </template>
 
