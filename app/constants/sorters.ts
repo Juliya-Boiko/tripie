@@ -28,3 +28,23 @@ export const filterByOptions = [
     value: 'Today'
   },
 ]
+
+
+export const sortCommentsOptions = [
+  {
+    label: 'Newest',
+    value: 'Newest'
+  },
+  {
+    label: 'Oldest',
+    value: 'Oldest'
+  },
+  {
+    label: 'Best',
+    value: 'Best'
+  },
+  {
+    label: 'Worst',
+    value: 'Worst'
+  },
+]

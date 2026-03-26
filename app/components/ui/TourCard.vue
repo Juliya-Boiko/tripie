@@ -114,8 +114,21 @@
   }
 
   &__price {
+    position: relative;
     margin-right: 6px;
     color: $neutral-5;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: $neutral-5;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   } 
 
   &__discount {

@@ -1,5 +1,8 @@
 <template>
-  <div class="counter">
+  <div 
+    class="counter"
+    :class="{ outlined }"
+  >
     <button 
       type="button" 
       class="counter__btn"
@@ -32,6 +35,7 @@
 <script setup lang="ts">
 const props = defineProps<{
   amount: number
+  outlined?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -52,9 +56,16 @@ const change = (v: 'decr' | 'incr') => {
 
 <style scoped lang="scss">
 .counter {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 16px;
+
+  &.outlined {
+    min-height: 48px;
+    border: 2px solid $neutral-6;
+    border-radius: 12px;
+    padding: 0 16px;
+  }
 
   &__btn {
     background-color: transparent;

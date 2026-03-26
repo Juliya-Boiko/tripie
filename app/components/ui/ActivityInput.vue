@@ -57,22 +57,10 @@
 
 <script setup lang="ts">
 import { onClickOutside } from "@vueuse/core"
-import type { IconName } from '../icon/icons-list'
-
+import { activityOptions } from "~/constants"
 const wrapperRef = ref(null)
 const isFocused = ref(false)
 const activity = ref('')
-
-const activityOptions: { value: string;  icon: IconName}[] = [
-  {
-    value: 'Plane',
-    icon: 'airplane'
-  },
-  {
-    value: 'Car',
-    icon: 'car'
-  },
-]
 
 const selectActivity = (v: string) => {
   activity.value = v

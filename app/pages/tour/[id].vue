@@ -1,60 +1,71 @@
 <template>
   <div class="tour">
-    <div class="tour__header">
-      <div>
-        <h1 class="heading-h2">Venice, Rome & Milan</h1>
-        <div class="tour__details">
-          <div class="tour__block"> 
-            <Icon 
-              name="star-filled" 
-              width="20px" 
-              height="20px" 
-              fill="currentColor" 
-            />
-            <span>4.8</span>
-            <span>(256 reviews)</span>
-          </div>
-          <div class="tour__block">
-            <Icon 
-              name="flag" 
-              width="20px" 
-              height="20px" 
-              fill="currentColor" 
-            />
-            <span>Queenstown, Otago, New Zealand</span>
+    <div class="tour__container">
+      <section class="tour__header">
+        <div>
+          <h1 class="heading-h2">Venice, Rome & Milan</h1>
+          <div class="tour__details">
+            <div class="tour__block"> 
+              <Icon 
+                name="star-filled" 
+                width="20px" 
+                height="20px" 
+                fill="currentColor" 
+              />
+              <span>4.8</span>
+              <span>(256 reviews)</span>
+            </div>
+            <div class="tour__block">
+              <Icon 
+                name="flag" 
+                width="20px" 
+                height="20px" 
+                fill="currentColor" 
+              />
+              <span>Queenstown, Otago, New Zealand</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="tour__actions">
-        <button type="button" class="tour__action-btn">
-          <Icon 
-            name="location" 
-            width="24px" 
-            height="24px" 
-            fill="currentColor" 
-          />
-        </button>
-        <button type="button" class="tour__action-btn">
-          <Icon 
-            name="share" 
-            width="24px" 
-            height="24px" 
-            fill="currentColor" 
-          />
-        </button>
-        <button type="button" class="tour__action-btn">
-          <Icon 
-            name="heart-outlined" 
-            width="24px" 
-            height="24px" 
-            fill="currentColor" 
-          />
-        </button>
-      </div>
+        <div class="tour__actions">
+          <button type="button" class="tour__action-btn">
+            <Icon 
+              name="location" 
+              width="24px" 
+              height="24px" 
+              fill="currentColor" 
+            />
+          </button>
+          <button type="button" class="tour__action-btn">
+            <Icon 
+              name="share" 
+              width="24px" 
+              height="24px" 
+              fill="currentColor" 
+            />
+          </button>
+          <button type="button" class="tour__action-btn">
+            <Icon 
+              name="heart-outlined" 
+              width="24px" 
+              height="24px" 
+              fill="currentColor" 
+            />
+          </button>
+        </div>
+      </section>
+      <TourGallery />
+      <section class="tour__info">
+        <div>
+          <TourOverview />
+          <TourBenefits />
+          <TourPlan />
+          <TourMap />
+        </div>
+        <TourOrder />
+      </section>
     </div>
-    <TourGallery />
-    <div class="tour__info">info</div>
+    <TourReviews />
   </div>
 </template>
 
@@ -64,7 +75,11 @@
 
 <style scoped lang="scss">
 .tour {
-  padding: 40px 160px 100px 160px;
+  padding: 40px 0 0 0;
+
+  &__container {
+    padding: 0 160px 100px 160px;
+  }
 
   &__header {
     padding-bottom: 40px;
@@ -106,20 +121,23 @@
     outline: none;
     color: $neutral-4;
   }
-  /* 
+
+  &__info {
+    padding-top: 80px;
+    display: grid;
+    grid-template-columns: 1fr 448px;
+    gap: 32px;
+  }
+  
   @media screen and (max-width: 1200px) {
-    &__filters {
-      width: calc(100% - 80px);
-    }
-
-    &__sorters {
-      padding: 0 40px 48px 40px;
-    }
-
-    &__grid {
+    &__container {
       padding: 0 40px 100px 40px;
-      grid-template-columns: repeat(3, 1fr);
     }
-  } */
+
+    &__info {
+      padding-top: 40px;
+      grid-template-columns: 1fr;
+    }
+  }
 }
 </style>

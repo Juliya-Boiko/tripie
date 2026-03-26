@@ -11,8 +11,8 @@
       <Icon
         v-if="checked"
         name="check"
-        width="16"
-        height="16"
+        width="16px"
+        height="16px"
         fill="#FCFCFD"
       />
     </span>

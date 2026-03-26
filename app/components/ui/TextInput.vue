@@ -2,6 +2,7 @@
   <label class="text-input">
     <input
       class="caption text-input__custom"
+      :class="{ selectView }"
       :value="modelValue"
       :disabled="disabled"
       :placeholder="placeholder"
@@ -15,6 +16,7 @@ const props = defineProps<{
   modelValue: string
   disabled?: boolean
   placeholder?: string
+  selectView?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -40,6 +42,10 @@ function onInput(e: Event) {
     background-color: transparent;
     outline: none;
     color: $neutral-2;
+
+    &.selectView {
+      border-radius: 12px;
+    }
 
     &:focus, &:focus-visible {
       border-color: $primary-blue;

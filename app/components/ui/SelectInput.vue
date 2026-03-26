@@ -4,12 +4,17 @@
       type="button"
       class="select-input__toggle"
       :class="{ open: isOpen }"
+      :disabled="disabled"
       @click="isOpen = !isOpen"
     >
       <div class="select-input__values caption-bold">
         {{ formattedValue }}
       </div>
-      <div class="select-input__icon" :class="{ open: isOpen, rotate: isOpen }">
+      <div 
+        v-if="!disabled"
+        class="select-input__icon" 
+        :class="{ open: isOpen, rotate: isOpen }"
+      >
         <Icon
           name="small-chevron-down"
           width="24px"
@@ -39,6 +44,7 @@ const props = defineProps<{
   options: { label: string; value: string }[]
   required?: boolean
   placeholder?: string
+  disabled?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -81,6 +87,11 @@ onClickOutside(wrapperRef, () => {
     border-radius: 12px;
     background-color: transparent;
     outline: none;
+
+    &:disabled {
+      color: inherit;
+      cursor: not-allowed;
+    }
   }
 
   &__values {
